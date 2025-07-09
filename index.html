@@ -77,6 +77,16 @@
               else if (e.key === "Left" || e.key === "ArrowLeft") {
                 leftPressed = false}
             }
+                canvas.addEventListener("touchmove", function(e) {
+  e.preventDefault();
+  const touch = e.touches[0];
+  const rect = canvas.getBoundingClientRect();
+  let touchX = touch.clientX - rect.left;
+  paddleX = touchX - paddleWidth / 2;
+
+  if (paddleX < 0) paddleX = 0;
+  if (paddleX > canvas.width - paddleWidth) paddleX = canvas.width - paddleWidth;
+});
 
             //drawing ball
             function drawBall() {
